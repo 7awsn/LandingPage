@@ -455,8 +455,8 @@ function Hero() {
             transition={{ delay: 0.7, duration: 0.7 }}
             className="mt-8 text-base md:text-lg text-white/60 max-w-lg leading-relaxed"
           >
-            Simulamos ataques reais ao seu sistema para encontrar as brechas — e te
-            mostrar como fechá-las antes que alguém com más intenções as use.
+            Simulamos ataques reais ao seu sistema para encontrar as brechas e mostrar
+            como fechá-las antes que alguém com más intenções as use.
           </motion.p>
 
           <motion.div
