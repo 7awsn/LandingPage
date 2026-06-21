@@ -18,7 +18,7 @@ interação de scroll.
 O site apresenta os serviços (red team, teste de invasão, pesquisa de 0day e
 inteligência de ameaças), explica como o trabalho funciona em três passos e
 mostra alguns casos anonimizados. O texto é todo em português direto, sem
-juridiquês — a proposta é que qualquer pessoa entenda, não só quem é da área.
+juridiquês. A proposta é que qualquer pessoa entenda, não só quem é da área.
 
 Alguns detalhes que valem o clique:
 
