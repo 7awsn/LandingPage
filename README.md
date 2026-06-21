@@ -27,14 +27,14 @@ Alguns detalhes que valem o clique:
 - Terminal "ao vivo" digitando sozinho na primeira sessão
 - Contadores que animam ao entrar na tela e textos com parallax
 
-## Tecnologias
+## Stack
 
 - React 18
 - Vite
 - Tailwind CSS
 - Framer Motion
 
-## Rodando localmente
+## Rodando
 
 ```bash
 npm install
