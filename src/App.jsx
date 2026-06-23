@@ -8,6 +8,7 @@ import {
   useInView,
   AnimatePresence,
 } from 'framer-motion';
+import Lenis from 'lenis';
 
 const TICKS = [
   ['-top-[6px]', '-left-[6px]'],
@@ -325,10 +326,52 @@ function Rail() {
   );
 }
 
+// Scroll suave (inércia) na página toda + links de âncora.
+function useSmoothScroll() {
+  useEffect(() => {
+    // respeita quem pediu menos animação no sistema
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const lenis = new Lenis({
+      duration: 1.1,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+    });
+
+    let raf;
+    const loop = (time) => {
+      lenis.raf(time);
+      raf = requestAnimationFrame(loop);
+    };
+    raf = requestAnimationFrame(loop);
+
+    // faz os links #ancora rolarem suave também
+    const onClick = (e) => {
+      const a = e.target.closest('a[href^="#"]');
+      if (!a) return;
+      const id = a.getAttribute('href');
+      if (id === '#' || id.length < 2) return;
+      const el = document.querySelector(id);
+      if (!el) return;
+      e.preventDefault();
+      lenis.scrollTo(el, { offset: -64 }); // desconta a altura do header fixo
+    };
+    document.addEventListener('click', onClick);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      document.removeEventListener('click', onClick);
+      lenis.destroy();
+    };
+  }, []);
+}
+
 export default function App() {
   const [booting, setBooting] = useState(() => !sessionStorage.getItem('booted'));
   const { scrollYProgress } = useScroll();
   const barScale = useSpring(scrollYProgress, { stiffness: 120, damping: 30 });
+
+  useSmoothScroll();
 
   const done = () => {
     sessionStorage.setItem('booted', '1');

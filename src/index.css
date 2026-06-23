@@ -15,7 +15,19 @@
   box-sizing: border-box;
 }
 
-html {
+/* scroll suave controlado pelo Lenis (ver useSmoothScroll em App.jsx) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+/* fallback: caso o Lenis não rode (reduced-motion), âncoras ainda suaves */
+html:not(.lenis) {
   scroll-behavior: smooth;
 }
 
