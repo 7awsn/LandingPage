@@ -631,7 +631,7 @@ function Stats() {
       <div className="h-2 ruler [mask-image:linear-gradient(to_right,transparent,black,transparent)]" />
       <div className="max-w-6xl mx-auto px-6 py-16 grid grid-cols-2 lg:grid-cols-4 gap-10">
         <Stat value={1204} format={(n) => `${Math.round(n).toLocaleString('pt-BR')}+`} label="brechas reportadas e corrigidas" />
-        <Stat value={47} format={(n) => Math.round(n)} label="falhas inéditas publicadas" />
+        <Stat value={47} format={(n) => Math.round(n)} label="CVE's publicadas" />
         <Stat value={100} format={(n) => `${Math.round(n)}%`} label="dos testes com escopo autorizado" />
         <Stat value={24} format={(n) => `${Math.round(n)}h`} label="para o primeiro retorno" />
       </div>
